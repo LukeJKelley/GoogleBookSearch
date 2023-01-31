@@ -1,0 +1,40 @@
+@import "../../Palette/palette.scss";
+
+.Search {
+  color: white;
+  display: flex;
+  justify-content: center;
+  ::placeholder {
+    color: white;
+  }
+  &__Input {
+    font-size: 40px;
+    width: 60vw;
+    border-radius: 8px;
+    text-align: center;
+    margin: 10px;
+    background-color: $input-background;
+    border: none;
+    &:focus {
+      background-color: $input-hover-background;
+      color: white;
+      border: none;
+    }
+  }
+
+  &__Button {
+    height: 60px;
+    width: 250px;
+    font-size: 22px;
+    border-radius: 12px;
+    background-color: $main-background;
+    border: 5px $main-border;
+    color: $main-text-color;
+    &:hover {
+      background-color: $button-background-color;
+      color: $button-hover-color;
+      font-weight: bold;
+      border: 5px $main-border;
+    }
+  }
+}
