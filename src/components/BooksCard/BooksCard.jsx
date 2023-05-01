@@ -1,27 +1,27 @@
+import { Link } from "react-router-dom";
+import React from "react";
 import styles from "./BooksCard.module.scss";
 
-const BooksCard = ({ books, loading }) => (
+const BooksCard = ({ books }) => (
   <div className={styles.Books}>
-    {loading ? (
-      <p>No Books to display</p>
-    ) : (
-      books.map((book, index) => (
-        <>
-          <a href={book.Link} target="_blank" className={styles.Books__Card}>
-            <div key={index} className={styles.Books__Card}>
-              <h3 className={styles.Books__Card__Title}>{book.Title}</h3>
-              <p>{book.Author}</p>
-              <img
-                src={book.ImageLink}
-                alt={book.Title}
-                className={styles.Books__Card__Img}
-              />
-              <p>{book.Description}</p>
-            </div>
-          </a>
-        </>
-      ))
-    )}
+    {books.map((book, index) => (
+      <React.Fragment key={index}>
+        <div className={styles.Books__Card}>
+          <h3 className={styles.Books__Card__Title}>{book.Title}</h3>
+          <p>{book.Author}</p>
+          <p>{book.PublishDate}</p>
+          <Link
+            className={styles.Books__Card__Link}
+            to={{
+              pathname: `/book/${index}`,
+              state: { books },
+            }}
+          >
+            Read more
+          </Link>
+        </div>
+      </React.Fragment>
+    ))}
   </div>
 );
 
